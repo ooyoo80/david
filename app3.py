@@ -5,6 +5,8 @@ from io import BytesIO           # 메모리 버퍼(파일처럼 사용) 제공
 from gtts import gTTS            # Google Text-to-Speech 라이브러리
 import base64                    # 바이너리 데이터를 base64로 인코딩/디코딩
 from datetime import datetime     # 현재 시간 기록용
+import socket
+# 기본 언어 설정 (환경변수에서 가져오거나 기본값 'ko' 사용)
 
 # 환경변수에서 기본 언어를 가져오고, 없으면 'ko'(한국어)로 설정
 DEFAULT_LANG = os.getenv('DEFAULT_LANG', 'ko')
@@ -46,8 +48,13 @@ def home():
             except Exception as e :
                 # TTS 변환 실패 시 에러 메시지
                 error = "TTS 변환에 실패했습니다."
+
+    if app.debug:
+        hostname = '컴퓨터(인스턴스) : ' + socket.gethostname()
+    else:
+        hostname = ' '
     # GET 요청이든 POST 요청이든 index.html을 렌더링(에러/오디오 데이터 전달)
-    return render_template("index.html", error=error, audio=audio)
+    return render_template("index.html", error=error, audio=audio,  computername=hostname)
 
 
 
@@ -58,4 +65,4 @@ def menu():
 
 # 이 파일을 직접 실행할 때만 Flask 서버를 실행
 if __name__ == '__main__':
-    app.run('0.0.0.0', 8080)  # 0.0.0.0:8080에서 서버 실행(외부 접속 허용)
+    app.run('0.0.0.0', 8080, debug=True)  # 0.0.0.0:8080에서 서버 실행(외부 접속 허용)
