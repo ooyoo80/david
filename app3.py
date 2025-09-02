@@ -6,7 +6,7 @@ from gtts import gTTS            # Google Text-to-Speech 라이브러리
 import base64                    # 바이너리 데이터를 base64로 인코딩/디코딩
 from datetime import datetime     # 현재 시간 기록용
 import socket
-# 기본 언어 설정 (환경변수에서 가져오거나 기본값 'ko' 사용)
+
 
 # 환경변수에서 기본 언어를 가져오고, 없으면 'ko'(한국어)로 설정
 DEFAULT_LANG = os.getenv('DEFAULT_LANG', 'ko')
