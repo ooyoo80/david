@@ -62,6 +62,9 @@ def home():
 def menu():
     return render_template("menu.html")
 
+@app.route("/test2")
+def test2():
+    return render_template('test2.html')
 
 # 이 파일을 직접 실행할 때만 Flask 서버를 실행
 if __name__ == '__main__':
