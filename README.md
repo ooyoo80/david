@@ -1,5 +1,17 @@
-# 프로젝트 이름
-Flask 기반 메뉴판 프로젝트
-- 메뉴 화면 구현
-- 버튼 3개 구성
-- PR workflow 실습
+## 반달곰 커피 홈페이지
+
+- 참조링크
+[반달곰 커피](https://반달곰커피)
+
+
+- 오디오 출력 소스코드
+```python
+lang = request.args.get('lang', DEFAULT_LANG)
+fp = BytesIO()
+gTTS(text, "com", lang).write_to_fp(fp)
+encoded_audio_data = base64.b64encode(fp.getvalue())
+```
+
+
+- 이미지
+![david](static/david.jpg)
